@@ -96,11 +96,24 @@ final class ModelRegistry
     {
         $definitions = $this->api->getDefinitions();
         $base = $name = $this->getTypeShortName($model->getType());
+
+        if(null !== $model->getName()){
+            $i = 1;
+            while($definitions->has($name)){
+                $name = $model->getName() . $i;
+                ++$i;
+            }
+
+           return $name; 
+        }
+
         $i = 1;
         while ($definitions->has($name)) {
             ++$i;
             $name = $base.$i;
         }
+
+
 
         return $name;
     }

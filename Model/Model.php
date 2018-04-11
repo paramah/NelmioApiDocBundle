@@ -19,13 +19,15 @@ final class Model
 
     private $groups;
 
+    private $name;
     /**
      * @param string[]|null $groups
      */
-    public function __construct(Type $type, array $groups = null)
+    public function __construct(Type $type, array $groups = null, $name = null)
     {
         $this->type = $type;
         $this->groups = $groups;
+        $this->name = $name;
     }
 
     /**
@@ -48,4 +50,10 @@ final class Model
     {
         return md5(serialize([$this->type, $this->groups]));
     }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
 }

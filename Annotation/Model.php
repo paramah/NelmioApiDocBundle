@@ -22,6 +22,7 @@ final class Model extends AbstractAnnotation
     public static $_types = [
         'type' => 'string',
         'groups' => '[string]',
+        'name' => 'string'
     ];
 
     public static $_required = ['type'];
@@ -40,4 +41,9 @@ final class Model extends AbstractAnnotation
      * @var string[]
      */
     public $groups;
+
+    /**
+     * @var string[]
+     */
+    public $name;
 }
