@@ -98,6 +98,7 @@ final class ModelRegistry
         $base = $name = $this->getTypeShortName($model->getType());
 
         if(null !== $model->getName()){
+            $name = $model->getName();
             $i = 1;
             while($definitions->has($name)){
                 $name = $model->getName() . $i;
@@ -107,15 +108,12 @@ final class ModelRegistry
            return $name; 
         }
 
-        $i = 1;
-        while ($definitions->has($name)) {
-            ++$i;
-            $name = $base.$i;
+        $prefix = '';
+        foreach ($model->getGroups() as $group) {
+            $prefix .= ucfirst($group); 
         }
 
-
-
-        return $name;
+        return $prefix.$name;
     }
 
     private function getTypeShortName(Type $type): string

@@ -43,7 +43,7 @@ final class Model extends AbstractAnnotation
     public $groups;
 
     /**
-     * @var string[]
+     * @var string
      */
     public $name;
 }

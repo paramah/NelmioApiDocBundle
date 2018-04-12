@@ -23,7 +23,7 @@ final class Model
     /**
      * @param string[]|null $groups
      */
-    public function __construct(Type $type, array $groups = null, $name = null)
+    public function __construct(Type $type, array $groups = null, string $name = null)
     {
         $this->type = $type;
         $this->groups = $groups;
@@ -48,10 +48,10 @@ final class Model
 
     public function getHash(): string
     {
-        return md5(serialize([$this->type, $this->groups]));
+        return md5(serialize([$this->type, $this->groups, $this->name]));
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
